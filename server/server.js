@@ -4,7 +4,7 @@ import { MongoClient } from 'mongodb';
 
 const io = new Server(3001, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://co-write-one.vercel.app',
         methods: ['GET', 'POST']
     }
 });
