@@ -6,11 +6,11 @@ CoWrite is a collaborative writing platform that allows users to work together o
 1. Clone the repository:
    `git clone https://github.com/your-username/CoWrite.git`
 2. Install dependencies for both the client and server:
-   `# Navigate to the client directory
-cd CoWrite/client
-npm install
-
-# Navigate to the server directory
-cd ../server
-npm install
-` 
+   ```bash
+   # Navigate to the client directory
+      cd CoWrite/client
+      npm install
+      # Navigate to the server directory
+      cd ../server
+      npm install
+   ```
