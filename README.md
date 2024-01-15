@@ -27,20 +27,20 @@ CoWrite is a collaborative writing platform that allows users to work together o
    ```
 
 # Usage
-1.Open your web browser and go to http://localhost:3000 to access the CoWrite application.
+1. Open your web browser and go to http://localhost:3000 to access the CoWrite application.
 
-2.Create a new document or enter an existing document ID.
+2. Create a new document or enter an existing document ID.
 
-3.Share the document ID with collaborators.
+3. Share the document ID with collaborators.
 
-4.Collaborate in real-time on the document.
+4. Collaborate in real-time on the document.
 
 # Technologies Used
-React
-Vite
-Node.js
-Socket.IO
-MongoDB
+1. React
+2. Vite
+3. Node.js
+4. Socket.IO
+5. MongoDB
 
 # Client
 The client side of CoWrite is a Vite-based React application that utilizes the Quill text editor. It establishes a socket connection to the server for real-time collaboration.
@@ -59,3 +59,25 @@ Start the client application:
 npm run dev
 ```
 
+# Server
+The server side of CoWrite is built with Node.js, Socket.IO, and MongoDB. It manages the real-time communication between clients and persists document data in MongoDB.
+
+# Server Installation
+```bash
+cd CoWrite/server
+npm install
+```
+
+# Server Usage
+
+#Start the server:
+
+```bash
+npm run devStart
+```
+
+# Contributing
+We welcome contributions! Please follow our contribution guidelines.
+
+# License
+This project is licensed under the MIT License.
