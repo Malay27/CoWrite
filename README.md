@@ -13,7 +13,7 @@ CoWrite is a collaborative writing platform that allows users to edit documents 
 
 ### Getting Started
 
-**Clone the repository:**
+**Clone the repository:
 
    ```bash
    git clone <repository-url>
