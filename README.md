@@ -70,7 +70,7 @@ npm install
 
 # Server Usage
 
-#Start the server:
+Start the server:
 
 ```bash
 npm run devStart
