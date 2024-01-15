@@ -1,28 +1,16 @@
 # CoWrite - Cooperative Writing Platform
+CoWrite is a collaborative writing platform that allows users to work together on documents in real-time. This project utilizes a Vite React app for the client, with Node.js, Socket.IO, and MongoDB for the server. Users can create and edit documents simultaneously, with changes being instantly reflected across all connected clients.
 
-CoWrite is a collaborative writing platform that allows users to edit documents in real-time. It utilizes a Vite React app on the client side and a Node.js, Socket.IO, and MongoDB stack on the server side.
+# Installation
 
-## Client
-
-### Technologies Used
-
-- React
-- Vite
-- Quill
-- Socket.IO
-
-### Getting Started
-
-**Clone the repository:
-
-   ```bash
-   git clone <repository-url>
-
-**Install dependencies:**
-
-cd client
+1. Clone the repository:
+   `git clone https://github.com/your-username/CoWrite.git`
+2. Install dependencies for both the client and server:
+   `# Navigate to the client directory
+cd CoWrite/client
 npm install
 
-**Run the development server**
-
-npm run dev
+# Navigate to the server directory
+cd ../server
+npm install
+` 
