@@ -6,69 +6,59 @@ import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 
 const TextEditor = () => {
-  const {id:documentId}=useParams();
+  const { id: documentId } = useParams();
   const [socket, setSocket] = useState();
   const [quill, setQuill] = useState();
 
   useEffect(() => {
-    const s = io("https://co-write-api.vercel.app");
+    const s = io(
+      process.env.NODE_ENV === "development"
+        ? "http://localhost:3001"
+        : process.env.NEXT_PUBLIC_VERCEL_URL || "https://your-production-url"
+    );
     setSocket(s);
     return () => {
       s.disconnect();
     };
   }, []);
 
-  useEffect(()=>{
-    if(socket==null || quill==null) return;
+  useEffect(() => {
+    if (!socket || !quill) return;
 
-    const interval=setInterval(()=>{
-      socket.emit('save-document',quill.getContents());
-    },2000);
+    const interval = setInterval(() => {
+      socket.emit("save-document", quill.getContents());
+    }, 2000);
 
-    return ()=>{
-      clearInterval(interval);
-    }
-  },[socket,quill])
-
-  useEffect(()=>{
-    if(socket==null || quill==null) return;
-
-    socket.once("load-document",document=>{
+    const loadDocumentHandler = (document) => {
       quill.setContents(document);
       quill.enable();
-    })
-    socket.emit("get-document",documentId);
-  },[socket,quill,documentId]);
+    };
 
-  useEffect(() => {
-    if (socket == null || quill == null) return;
-    const handler = (delta) => {
+    socket.once("load-document", loadDocumentHandler);
+    socket.emit("get-document", documentId);
+
+    const receiveChangesHandler = (delta) => {
       quill.updateContents(delta);
     };
 
-    socket.on("receive-changes", handler);
+    socket.on("receive-changes", receiveChangesHandler);
 
-    return () => {
-      socket.off("receive-changes", handler);
-    };
-  }, [socket, quill]);
-
-  useEffect(() => {
-    if (socket == null || quill == null) return;
-    const handler = (delta, oldDelta, source) => {
+    const textChangeHandler = (delta, oldDelta, source) => {
       if (source !== "user") return;
       socket.emit("send-changes", delta);
     };
 
-    quill.on("text-change", handler);
+    quill.on("text-change", textChangeHandler);
 
     return () => {
-      quill.off("text-change", handler);
+      clearInterval(interval);
+      socket.off("receive-changes", receiveChangesHandler);
+      quill.off("text-change", textChangeHandler);
     };
-  }, [socket, quill]);
+  }, [socket, quill, documentId]);
 
   const wrapperRef = useCallback((wrapper) => {
-    if (wrapper == null) return;
+    if (!wrapper) return;
     wrapper.innerHTML = "";
     const editor = document.createElement("div");
     wrapper.append(editor);

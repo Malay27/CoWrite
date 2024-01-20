@@ -23,6 +23,6 @@ CoWrite is a collaborative writing platform that allows users to edit documents 
 cd client
 npm install
 
-**Run the development server**
+Run the development server
 
 npm run dev

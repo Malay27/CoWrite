@@ -1,15 +1,22 @@
-import { connectionURI } from './constant.js';
 import { Server } from 'socket.io';
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 
-const io = new Server(3001, {
+dotenv.config();
+// Update the port configuration
+const io = new Server(process.env.PORT || 3001, {
     cors: {
-        origin: 'https://co-write-one.vercel.app',
+        // Allow all origins in a production environment
+        origin: process.env.NODE_ENV === "production" ? "*" : "http://localhost:3000",
         methods: ['GET', 'POST']
     }
 });
 
-const client = new MongoClient(connectionURI, { useNewUrlParser: true, useUnifiedTopology: true });
+console.log('MongoDB URI:', process.env.MONGODB_URI);
+
+// Replace the hardcoded connectionURI with an environment variable
+const client = new MongoClient(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 io.on('connection', (socket) => {
     socket.on('get-document', async (documentId) => {
