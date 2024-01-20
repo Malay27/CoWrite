@@ -7,7 +7,7 @@ dotenv.config();
 const io = new Server(process.env.PORT || 3001, {
     cors: {
         // Allow all origins in a production environment
-        origin: process.env.NODE_ENV === "production" ? "*" : "http://localhost:3000",
+        origin: process.env.NODE_ENV === "production" ? "https://co-write-one.vercel.app" : "http://localhost:3000",
         methods: ['GET', 'POST']
     }
 });
