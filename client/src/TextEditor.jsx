@@ -14,7 +14,7 @@ const TextEditor = () => {
     const s = io(
       process.env.NODE_ENV === "development"
         ? "http://localhost:3001"
-        : process.env.NEXT_PUBLIC_VERCEL_URL || "https://co-write-api.vercel.app"
+        :"https://co-write-api.vercel.app"
     );
     setSocket(s);
     return () => {
