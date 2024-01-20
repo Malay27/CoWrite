@@ -4,10 +4,10 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 // Update the port configuration
-const io = new Server(process.env.PORT || 3001, {
+const io = new Server(3001, {
     cors: {
         // Allow all origins in a production environment
-        origin: process.env.NODE_ENV === "production" ? "https://co-write-one.vercel.app" : "http://localhost:3000",
+        origin: "http://localhost:3000",
         methods: ['GET', 'POST']
     }
 });

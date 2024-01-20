@@ -12,9 +12,7 @@ const TextEditor = () => {
 
   useEffect(() => {
     const s = io(
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3001"
-        :"https://co-write-api.vercel.app"
+      "http://localhost:3001"
     );
     setSocket(s);
     return () => {
