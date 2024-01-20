@@ -26,12 +26,10 @@ CoWrite is a collaborative writing platform that allows users to work together o
    npm start
    ```
 
-<<<<<<< HEAD
 Run the development server
 =======
 # Usage
 1. Open your web browser and go to http://localhost:3000 to access the CoWrite application.
->>>>>>> 2b60d89d724349d1e7bbb6d3b9faa6e29c562277
 
 2. Create a new document or enter an existing document ID.
 
